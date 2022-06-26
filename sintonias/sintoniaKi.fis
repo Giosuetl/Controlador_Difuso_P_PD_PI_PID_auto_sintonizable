@@ -1,0 +1,37 @@
+[System]
+Name='sintoniaKi'
+Type='mamdani'
+Version=2.0
+NumInputs=1
+NumOutputs=1
+NumRules=5
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='error'
+Range=[-1 1]
+NumMFs=5
+MF1='negh':'gaussmf',[0.1 -1]
+MF2='negm':'gaussmf',[-0.15 -0.4]
+MF3='posh':'gaussmf',[0.1 1]
+MF4='cero':'gaussmf',[0.15 0]
+MF5='posm':'gaussmf',[0.15 0.4]
+
+[Output1]
+Name='salida'
+Range=[0 16]
+NumMFs=3
+MF1='cero':'trimf',[0 0 3.2]
+MF2='med':'trimf',[1.778 7.822 11.2]
+MF3='alto':'trimf',[9.37956084656085 12.9365608465608 15.9565608465608]
+
+[Rules]
+1, 3 (1) : 1
+4, 1 (1) : 1
+3, 3 (1) : 1
+5, 2 (1) : 1
+2, 2 (1) : 1
